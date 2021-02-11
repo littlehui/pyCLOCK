@@ -666,7 +666,7 @@ def timer_loop():
 
             if timer_sec == 0:
                 timer_start = False
-                pygame.mixer.music.load("tone.wav")
+                pygame.mixer.music.load("/usr/share/pyclock/tone.wav")
                 pygame.mixer.music.play(-1)
 
         disp_timer(pos)
@@ -743,7 +743,7 @@ def alarm_loop():
         if alarm_date - datetime.datetime.now() < datetime.timedelta(0):
             if not alarm_flag:
                 alarm_flag = True
-                pygame.mixer.music.load("tone.wav")
+                pygame.mixer.music.load("/usr/share/pyclock/tone.wav")
                 pygame.mixer.music.play(-1)
 
         disp_alarm(pos)
