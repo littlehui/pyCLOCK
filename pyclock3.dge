@@ -591,7 +591,7 @@ def cal_loop():
                 if event.key == pygame.K_DOWN:
                     diff += 1
 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
         disp_cal(pos, diff)
@@ -645,7 +645,7 @@ def timer_loop():
                     if pos == 1 and timer_sec >= 1:
                         timer_sec -= 1
 
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_LCTRL:
 
                     if pos == 2:
                         timer_start = True
@@ -655,7 +655,7 @@ def timer_loop():
                         timer_start = False
                         pygame.mixer.music.stop()
 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
         while timer_start and timer_next <= pygame.time.get_ticks():
@@ -728,7 +728,7 @@ def alarm_loop():
                 if old_alarm != alarm_min:
                     calc_alarm()
 
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_LCTRL:
                     if pos == 2:
                         do_sleep()
 
@@ -737,7 +737,7 @@ def alarm_loop():
                         pygame.mixer.music.stop()
                         alarm_flag = False
 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
         if alarm_date - datetime.datetime.now() < datetime.timedelta(0):
@@ -808,7 +808,7 @@ def setup_loop():
                     if pos == 5:
                         setup_delta += datetime.timedelta(seconds=1)
 
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_LCTRL:
                     if pos == 6:
                         do_setup()
                         setup_delta = datetime.timedelta(0)
@@ -816,7 +816,7 @@ def setup_loop():
                     if pos == 7:
                         setup_delta = datetime.timedelta(0)
 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
         disp_setup(pos)
@@ -858,10 +858,10 @@ def main_loop():
                     else:
                         pos = 0
 
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_LCTRL:
                     enter_sub(pos)
 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
         disp_menu(pos)
