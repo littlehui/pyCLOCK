@@ -114,11 +114,11 @@ def do_setup():
     day_str = "%04d-%02d-%02d " % (day.year, day.month, day.day)
     day_str += "%02d:%02d:%02d" % (day.hour, day.minute, day.second)
 
-    cmd_str = "date --set \"%s\"" % day_str
+    cmd_str = "sudo date --set \"%s\"" % day_str
     output_text(cmd_str)
 
     os.system(cmd_str)
-    os.system("hwclock -uw")
+    os.system("sudo hwclock -uw")
 
 
 def draw_string(msg, x, y, color, center=False):
