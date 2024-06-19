@@ -85,7 +85,7 @@ def output_text(text):
 def do_sleep():
     output_text("do_sleep!!")
 
-    day = get_now_plus_8_hours()  # 使用加8小时的时间
+    day = datetime.datetime.now()
 
     delta = alarm_date - day
 
@@ -111,7 +111,7 @@ def do_sleep():
 def do_setup():
     output_text("do_setup!!")
 
-    day = get_now_plus_8_hours() - setup_delta  # 使用加8小时的时间
+    day = datetime.datetime.now() - setup_delta  # 使用加8小时的时间
 
     day_str = "%04d-%02d-%02d " % (day.year, day.month, day.day)
     day_str += "%02d:%02d:%02d" % (day.hour, day.minute, day.second)
