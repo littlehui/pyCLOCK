@@ -34,10 +34,12 @@ color_yellow = (255, 255, 0)
 shadow = (0, 0, 0)
 
 timer_sec = 180
-setup_delta = datetime.timedelta()
+setup_delta = datetime.timedelta(hours=8)
 alarm_min = 7 * 60
-alarm_date = datetime.datetime.now()
+alarm_date = datetime.datetime.now() + datetime.timedelta(hours=8)
 
+def get_now_plus_8_hours():
+    return datetime.datetime.now() + datetime.timedelta(hours=8)
 
 def calc_alarm():
     global alarm_date
@@ -833,9 +835,6 @@ def enter_sub(pos):
         alarm_loop()
     if pos == 0:
         cal_loop()
-
-def get_now_plus_8_hours():
-    return datetime.datetime.now() + datetime.timedelta(hours=8)
 
 def main_loop():
     max_pos = 4
