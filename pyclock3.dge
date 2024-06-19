@@ -208,7 +208,7 @@ def disp_cal(pos, diff):
            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     date = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()
 
     present_year = day.year
     present_mon = day.month
@@ -297,7 +297,7 @@ def disp_clock():
 
     draw_string("CLOCK", half_sw, 12, color_white, True)
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()
 
     theta_fine = (2 * math.pi)/360
 
@@ -742,7 +742,7 @@ def alarm_loop():
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_LALT:
                     done = True
 
-        if alarm_date - datetime.datetime.now() < datetime.timedelta(0):
+        if alarm_date - get_now_plus_8_hours() < datetime.timedelta(0):
             if not alarm_flag:
                 alarm_flag = True
                 pygame.mixer.music.load("/usr/share/pyclock/tone.wav")
