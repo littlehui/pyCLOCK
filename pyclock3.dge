@@ -42,7 +42,7 @@ alarm_date = datetime.datetime.now()
 def calc_alarm():
     global alarm_date
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()
     hour = int(alarm_min / 60)
     minute = int(alarm_min % 60)
     alarm_date = day.replace(hour=hour, minute=minute, second=0, microsecond=0)
@@ -83,7 +83,7 @@ def output_text(text):
 def do_sleep():
     output_text("do_sleep!!")
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()  # 使用加8小时的时间
 
     delta = alarm_date - day
 
@@ -109,7 +109,7 @@ def do_sleep():
 def do_setup():
     output_text("do_setup!!")
 
-    day = datetime.datetime.now() - setup_delta
+    day = get_now_plus_8_hours() - setup_delta  # 使用加8小时的时间
 
     day_str = "%04d-%02d-%02d " % (day.year, day.month, day.day)
     day_str += "%02d:%02d:%02d" % (day.hour, day.minute, day.second)
@@ -161,7 +161,7 @@ def base_screen():
 
 def disp_current():
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()  # 使用加8小时的时间
 
     str_current = "%04d-%02d-%02d %02d:%02d:%02d" % \
         (day.year, day.month, day.day, day.hour, day.minute, day.second)
@@ -390,7 +390,7 @@ def disp_alarm(pos):
     x = half_sw
     y = 140
 
-    day = datetime.datetime.now()
+    day = get_now_plus_8_hours()  # 使用加8小时的时间
     alm = day.replace(hour=int(alarm_min / 60),
                       minute=int(alarm_min % 60), second=0, microsecond=0)
 
@@ -439,7 +439,7 @@ def disp_setup(pos):
 
     # YYYY-MM-DD HH:MM:SS
 
-    day = datetime.datetime.now() - setup_delta
+    day = get_now_plus_8_hours() - setup_delta  # 使用加8小时的时间
 
     day_num = [
         "%04d" % day.year,
@@ -834,6 +834,8 @@ def enter_sub(pos):
     if pos == 0:
         cal_loop()
 
+def get_now_plus_8_hours():
+    return datetime.datetime.now() + datetime.timedelta(hours=8)
 
 def main_loop():
     max_pos = 4
